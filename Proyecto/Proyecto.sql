@@ -67,4 +67,6 @@ create table Pedidos (
     Fecha_Llegada date
 );
 
-alter table Estado add constraint FK_MANO foreign key (ID_Estado) references Dispositivos (Mano_id) on update cascade;
+alter table Dispositivos add constraint FK_DISP_MANO foreign key (Mano_id) references Estado (ID_Estado) on update cascade;
+alter table Juegos add constraint FK_JUEGOS_MANO foreign key (Mano_id) references Estado (ID_Estado) on update cascade;
+alter table Merchan add constraint FK_MERCHAN_MANO foreign key (Mano_id) references Estado (ID_Estado) on update cascade;
