@@ -32,11 +32,11 @@ CREATE TABLE Productos(
   Stock INT(3) NOT NULL
   );
   
-  CREATE TABLE Pedidos (
+CREATE TABLE Pedidos (
   idPedidos INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   clientesid INT NOT NULL,
   productoid INT NOT NULL,
-  precio DECIMAL(3.2) NOT NULL,
+  precio DECIMAL(5,2) NOT NULL,
   cantidad INT(3) NOT NULL,
   fecha_venta DATE,
   fecha_salida DATE,
@@ -111,7 +111,7 @@ insert into productos (nombre, tipoid, proveedorid, Stock) values
     ('super Mario odyssey', '2', '1', '100');
 
 insert into compras (proveedorid, productoid, precio, cantidad, fecha_compra, fecha_llegada) values 
-	(5, 1, '65', '100', '2019/3/25', '2019/4/29'),
+	(5, 1, '65', '100', '2019/03/25', '2019/04/29'),
     (2, 4, '5', '250', '2016/04/08', '2016/07/02'),
     (1, 5, '45', '135', '2019/04/01', '2019/05/21'),
     (3, 3, '60', '199', '2018/07/14', '2018/10/18'),
@@ -123,10 +123,11 @@ insert into pedidos (clientesid, productoid, precio, cantidad, fecha_venta, fech
     ('4', '2', '70.09', '2', '2020/12/03', '2020/12/04', '2020/12/05', '2020/12/04'),
     ('2', '4', '15.90', '5', '2020/12/03', '2020/12/10', '2020/12/15', '2020/12/11'),
     ('3', '3', '120.50', '2', '2020/12/03', '2020/12/04', '2020/12/05', '2020/12/04');    
-/*truncate tienda_game.;*/
 
-
-
+select * from pedidos;
+select * from compras where month(fecha_compra) = '04';
+select nombre, Stock from productos where stock < 51;
+select precio,cantidad,fecha_venta,fecha_llegada from pedidos where clientesid = 2;
 
 
 
