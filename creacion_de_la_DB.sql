@@ -70,7 +70,7 @@ CREATE TABLE Detalles(
   Detalles VARCHAR(255) NOT NULL
   );
 
-ALTER TABLE compras ADD CONSTRAINT FK_COMPRAS_PROVEEDORES FOREIGN KEY (proveedorid) REFERENCES Proveedores (idProveedores);
+ALTER TABLE compras ADD CONSTRAINT FK_COMPRAS_PROVEEDORES FOREIGN KEY (proveedorid) REFERENCES Proveedores (idProveedores) on delete cascade;
 ALTER TABLE compras ADD CONSTRAINT FK_COMPRAS_PRODUCTOS FOREIGN KEY (productoid) REFERENCES Productos (idProductos);
 ALTER TABLE pedidos ADD CONSTRAINT FK_PEDIDOS_CLIENTES FOREIGN KEY (clientesid) REFERENCES Clientes (idClientes);
 ALTER TABLE pedidos ADD CONSTRAINT FK_PEDIDOS_PRODUCTOS FOREIGN KEY (productoid) REFERENCES Productos (idProductos);
@@ -127,7 +127,15 @@ insert into pedidos (clientesid, productoid, precio, cantidad, fecha_venta, fech
 select * from pedidos;
 select * from compras where month(fecha_compra) = '04';
 select nombre, Stock from productos where stock < 51;
-select precio,cantidad,fecha_venta,fecha_llegada from pedidos where clientesid = 2;
+select clientesid, precio, cantidad, fecha_venta, fecha_llegada from pedidos where clientesid = 2;
+select * from clientes where Empresa = 'no' and codigo_postal = 28043;
+
+delete from pedidos where productoid = 1;
+delete from proveedores where idProveedores = 5;
+
+update pedidos set precio=20.00 where productoid=4;
+update productos set stock=150 where stock=100;
+update pedidos set fecha_llegada='2021/01/02' where idPedidos=3;
 
 
 
