@@ -130,11 +130,16 @@ select nombre, Stock from productos where stock < 51;
 select clientesid, precio, cantidad, fecha_venta, fecha_llegada from pedidos where clientesid = 2;
 select * from clientes where Empresa = 'no' and codigo_postal = 28043;
 
+/*Delete 1*/
 delete from pedidos where productoid = 1;
+/*Delete 2*/
 delete from proveedores where idProveedores = 5;
 
+/*Update 1*/
 update pedidos set precio=20.00 where productoid=4;
+/*Update 2*/
 update productos set stock=150 where stock=100;
+/*Update 3*/
 update pedidos set fecha_llegada='2021/01/02' where idPedidos=3;
 
 
